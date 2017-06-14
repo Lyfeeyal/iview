@@ -82,22 +82,21 @@
             <Row style="height: 100%;">
                 <i-col span="5" style="height: 100%;">
 
-                    <Menu style="height: 100%;overflow-y: scroll;" active-name="1-2" width="auto" :open-names="['1']"
+                    <Menu style="height: 100%;overflow-y: scroll;" active-name="" width="auto" :open-names="[]"
                           @on-select="onSelect">
-                        <Submenu name="1">
+
+                        <Submenu name="1" v-for="item in items">
                             <template slot="title">
                                 <Icon type="ios-navigate"></Icon>
-                                导航一
+                                {{item.navTitle}}
                             </template>
 
-                            <Menu-item name="/page1">
-                                PAGE1
-                            </Menu-item>
-                            <Menu-item name="page2">
-                                PAGE2
+                            <Menu-item v-bind:name="one.href" v-for="one in item.items">
+                                {{one.name}}
                             </Menu-item>
                         </Submenu>
                     </Menu>
+
 
                 </i-col>
                 <i-col span="19">
@@ -115,13 +114,22 @@
 </template>
 <script>
 
+    import navConfig from './nav-config.js';
     export default {
+        data: function () {
+
+            return {
+                items: navConfig
+            }
+        }
+        ,
         computed: {
             contentH: function () {
                 console.log(document.body.clientHeight);
                 return (document.body.clientHeight - 200) + 'px';
             }
-        },
+        }
+        ,
         methods: {
             onSelect: function (state) {
                 console.log(state);

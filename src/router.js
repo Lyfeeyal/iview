@@ -1,24 +1,10 @@
-const routers = [
-    {
-        path: '/',
-        meta: {
-            title: 'index page'
-        },
-        component: (resolve) => require(['./views/index.vue'], resolve)
-    },
-    {
-        path: '/page1',
-        meta: {
-            title: 'page1'
-        },
-        component: (resolve) => require(['./views/page1.vue'], resolve)
-    },
-    {
-        path: '/page2',
-        meta: {
-            title: 'page2'
-        },
-        component: (resolve) => require(['./views/page2.vue'], resolve)
-    }
-];
+import routerConfig from './config.js';
+console.log(routerConfig);
+
+const routers = [];
+
+for (let i = 0; i < routerConfig.length; i++) {
+    routers.push(routerConfig[i]);
+}
+
 export default routers;
