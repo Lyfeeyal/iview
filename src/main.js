@@ -32,3 +32,9 @@ new Vue({
     router: router,
     render: h => h(App)
 });
+
+
+Vue.component('my-component', {
+    template: '<div>A custom component!' +
+    '<slot name="mySlot"></slot></div>'
+});

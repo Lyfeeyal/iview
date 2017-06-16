@@ -1,10 +1,14 @@
 import routerConfig from './config.js';
-console.log(routerConfig);
+import homeRouter from './modules/home/router.js';
 
+const routerArr=[routerConfig,homeRouter];
 const routers = [];
 
-for (let i = 0; i < routerConfig.length; i++) {
-    routers.push(routerConfig[i]);
+for(let arrIndex=0;arrIndex<routerArr.length;arrIndex++){
+
+    for (let i = 0; i < routerArr[arrIndex].length; i++) {
+        routers.push(routerArr[arrIndex][i]);
+    }
 }
 
 export default routers;

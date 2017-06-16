@@ -8,13 +8,35 @@
             <Button type="ghost" @click="handleStart">Start iView</Button>
             <a type="ghost" href="/page2">Start iView</a>
         </h2>
-        <!--<Col span="24">
-        </Col>-->
-        <!--<Row type="flex" justify="center" align="middle">-->
-        <!--</Row>-->
+
+        <div class="container">
+            <header>
+                <slot name="header"></slot>
+            </header>
+            <main>
+                <slot></slot>
+            </main>
+            <footer>
+                <slot name="footer"></slot>
+            </footer>
+        </div>
+
+        <!--全局組件-->
+        <my-component>
+
+            <p slot="mySlot">
+                This is slot content!
+            </p>
+
+        </my-component>
+
+        <!--局部組件-->
+        <my-component1></my-component1>
     </div>
+
 </template>
 <script>
+
     export default {
         methods: {
             handleStart () {
@@ -22,6 +44,12 @@
                     title: 'Bravo',
                     content: 'Now, enjoy the convenience of iView.'
                 });
+            }
+        },
+        components: {
+            'my-component1': {
+                template: '<div>A custom component11!' +
+                '<slot name="mySlot"></slot></div>'
             }
         }
     }

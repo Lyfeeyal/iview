@@ -85,13 +85,13 @@
                     <Menu style="height: 100%;overflow-y: scroll;" active-name="" width="auto" :open-names="[]"
                           @on-select="onSelect">
 
-                        <Submenu name="1" v-for="item in items">
+                        <Submenu name="1" v-for="item in items" :key="item.id">
                             <template slot="title">
                                 <Icon type="ios-navigate"></Icon>
                                 {{item.navTitle}}
                             </template>
 
-                            <Menu-item v-bind:name="one.href" v-for="one in item.items">
+                            <Menu-item v-bind:name="one.href" v-for="one in item.items" :key="one.id">
                                 {{one.name}}
                             </Menu-item>
                         </Submenu>
